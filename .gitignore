@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+data/
+save/
+lightning_logs/
+wandb/
+*.pth
+*.ckpt
+*.pt
+.DS_Store

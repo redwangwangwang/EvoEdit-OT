@@ -1,0 +1,4 @@
+-r upstream/requirements.txt
+einops>=0.6
+torchvision
+pytest>=8.0
