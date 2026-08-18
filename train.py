@@ -9,12 +9,15 @@ from pprint import pprint
 
 ROOT = Path(__file__).resolve().parent
 UPSTREAM = ROOT / "upstream"
-if not UPSTREAM.exists():
+UPSTREAM_DATA_MODULE = UPSTREAM / "dataset" / "data_module.py"
+if not UPSTREAM_DATA_MODULE.exists():
     raise RuntimeError(
         "Missing BiOTPrompt submodule. Run `git submodule update --init --recursive`."
     )
+# Keep this repository ahead of the submodule so `configs` and `models` resolve
+# to EvoEdit-OT, while upstream-only packages (dataset/evalcap/etc.) remain importable.
 if str(UPSTREAM) not in sys.path:
-    sys.path.insert(0, str(UPSTREAM))
+    sys.path.append(str(UPSTREAM))
 
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
